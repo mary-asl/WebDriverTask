@@ -12,7 +12,7 @@ public class FirstScript extends BaseForAllTests {
 
     @Test
     public void verifyDisplayedItems() { // Verify that items are displayed
-        WebElement banner = driver.findElement(By.id("banner_0866719e-d534-48d8-8ba4-ec29cd961e28"));
+        WebElement banner = driver.findElement(By.id("banner_12529ee6-9afc-449a-b568-6fdfba574386"));
         do {
             driver.findElement(By.xpath("//div/a[2]/button")).click();
         }
