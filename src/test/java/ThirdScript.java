@@ -8,7 +8,7 @@ public class ThirdScript extends BaseForAllTests {
     public void verifyPageTitle() {
         WebElement input = driver.findElement(By.id("tbSrch"));
         String expectedTitle = input.getText();
-        input.sendKeys("футболка йода");
+        input.sendKeys("funko pop star wars");
         driver.findElement(By.id("btnSrch")).click();
         String actualTitle = driver.findElement(By.xpath("/html/head/title")).getText();
         Assert.assertEquals(actualTitle, expectedTitle);
