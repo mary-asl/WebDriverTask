@@ -9,5 +9,8 @@
         <module name="WebDriverTask" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="WebDriverTask" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
