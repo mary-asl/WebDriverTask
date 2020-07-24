@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ThirdScript extends BaseForAllTests {
+public class TextSearchWildberriesTest extends BaseForAllTests {
     @Test
     public void verifyPageTitle() {
         WebElement input = driver.findElement(By.id("tbSrch"));

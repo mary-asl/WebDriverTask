@@ -8,21 +8,21 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class FirstScript extends BaseForAllTests {
+public class PromoBannersWildberriesTest extends BaseForAllTests {
 
     @Test
-    public void verifyDisplayedItems() { // Verify that items are displayed
+    public void verifyDisplayedItems() {
         WebElement banner = driver.findElement(By.id("banner_323019f5-0db3-4d4d-95b1-b75fb62f21f2"));
         do {
             driver.findElement(By.xpath("//div/a[2]/button")).click();
         }
         while (!banner.isDisplayed());
-        banner.click(); // Click on the banner "50% discount"
+        banner.click();
         boolean actual = driver.findElement(By.xpath("//div[@class='dtList-inner']")).isDisplayed();
         Assert.assertEquals(actual, true);
     }
 
-    @Test(dependsOnMethods = "verifyDisplayedItems") // Verify that all displayed items have discount since 50%
+    @Test(dependsOnMethods = "verifyDisplayedItems")
     public void verifyDiscount() {
         boolean actual = true;
         List<WebElement> discounts = driver.findElements(By.cssSelector("span.price-sale.active"));

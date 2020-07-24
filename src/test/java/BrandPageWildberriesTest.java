@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
-public class SecondScript extends BaseForAllTests {
+public class BrandPageWildberriesTest extends BaseForAllTests {
 
     @Test // Verify that category banners are displayed on the page
     public void verifyDisplayedCategory() {
