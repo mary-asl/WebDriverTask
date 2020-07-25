@@ -48,8 +48,8 @@ public class PromoBannersWildberriesTest extends BaseForAllTests {
             check = false;
         }
         if (check)
-            driver.findElement(By.xpath("//div[@class='i-sizes-block-v1']/label/span")).click(); //select size if it's possible;
-        driver.findElement(By.xpath("//div[@class='order']/button")).click(); //add to favorites
+            driver.findElement(By.xpath("//div[@class='i-sizes-block-v1']/label/span")).click();
+        driver.findElement(By.xpath("//div[@class='order']/button")).click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".signIn")));
         boolean actual = element.isDisplayed();

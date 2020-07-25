@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BrandPageWildberriesTest extends BaseForAllTests {
 
-    @Test // Verify that category banners are displayed on the page
+    @Test
     public void verifyDisplayedCategory() {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,4700)");
         WebElement eksmo = driver.findElement(By.xpath("//a[@href='/brands/eksmo']"));
