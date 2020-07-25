@@ -12,7 +12,7 @@ public abstract class BaseForAllTests {
 
     protected WebDriver driver;
     protected String baseUrl = "https://www.wildberries.kz";
-    public static final int WAIT_FOR_ELEMENT_SECONDS = 15;
+    public static final int WAIT_FOR_ELEMENT_SECONDS = 30;
 
     @BeforeClass
     public void initWebDriver() {
@@ -24,21 +24,12 @@ public abstract class BaseForAllTests {
     }
 
     @AfterClass
-    public void close(){
-        driver.close();
+    public void quit() {
+        driver.quit();
     }
 
-
-    public void waitForElementPresent(By locator){
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-    }
-
-    public void waitForElementVisible(By locator){
+    public void waitForElementVisible(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public void waitForElementEnabled(By locator){
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
 }

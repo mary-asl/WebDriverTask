@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TextSearchWildberriesTest extends BaseForAllTests {
+public class TextSearchTest extends BaseForAllTests {
 
     private static final By ITEMS_NAME_LOCATOR = By.xpath("//span[@class='goods-name c-text-sm']");
     private static final By SEARCH_INPUT_LOCATOR = By.id("tbSrch");
@@ -20,9 +20,9 @@ public class TextSearchWildberriesTest extends BaseForAllTests {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test()
+    @Test
     public void isItemFound() {
-        boolean actual = true;
+        boolean actual = false;
         WebElement input = driver.findElement(SEARCH_INPUT_LOCATOR);
         input.sendKeys("funko pop star wars");
         driver.findElement(SEARCH_BTN_LOCATOR).click();
@@ -36,6 +36,8 @@ public class TextSearchWildberriesTest extends BaseForAllTests {
                 actual = false;
                 break;
             }
+            else
+                actual = true;
         }
         Assert.assertTrue(actual);
     }
