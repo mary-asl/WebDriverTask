@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PromoActionsTest extends BaseForAllTests {
 
-    private static final By PROMO_PAGE_LOCATOR = By.xpath("//a[@href='/promotions/chistim-sklad?bid=eaba7351-8486-4110-a9c0-5ff541286f56']");
+    private static final By PROMO_PAGE_LOCATOR = By.xpath(".//a[contains(@href,'/promotions/chistim-sklad')]");
     private static final By ITEMS_LOCATOR = By.xpath("//div[@class='dtList-inner']");
     private static final By SIZE_BTN_LOCATOR = By.xpath("//label[@data-size-name]");
 
