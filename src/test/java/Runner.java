@@ -13,7 +13,7 @@ public class Runner {
         tng.addListener(tla);
 
         XmlSuite suite = new XmlSuite();
-        suite.setName("WebDriverTask");
+        suite.setName("Wildberries");
 
         List<String> files = new ArrayList<String>() {{
             add("src/main/resources/wildberries.xml");
