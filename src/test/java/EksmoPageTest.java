@@ -41,13 +41,14 @@ public class EksmoPageTest extends BaseForAllTests {
         waitForElementVisible(ITEMS_DISCOUNT_LOCATOR);
         List<WebElement> sales = driver.findElements(ITEMS_DISCOUNT_LOCATOR);
 
+        outerloop:
         for (int i = 0; i < sales.size(); i++) {
             for (int j = i + 1; j < sales.size(); j++) {
                 Double sale1 = Double.parseDouble(sales.get(i).getText().substring(0, 3));
                 Double sale2 = Double.parseDouble(sales.get(j).getText().substring(0, 3));
                 if (sale1 > sale2) {
                     actual = false;
-                    break;
+                    break outerloop;
                 } else
                     actual = true;
             }
@@ -62,13 +63,14 @@ public class EksmoPageTest extends BaseForAllTests {
         driver.findElement(RATE_LOCATOR).click();
         List<WebElement> rates = driver.findElements(ITEM_RATES_LOCATOR);
 
+        outerloop:
         for (int i = 0; i < rates.size(); i++) {
             for (int j = i + 1; j < rates.size(); j++) {
                 Integer rate1 = Integer.parseInt(rates.get(i).getText());
                 Integer rate2 = Integer.parseInt(rates.get(j).getText());
                 if (rate1 < rate2) {
                     actual = false;
-                    break;
+                    break  outerloop;
                 } else
                     actual = true;
             }
@@ -85,13 +87,14 @@ public class EksmoPageTest extends BaseForAllTests {
         waitForElementVisible(ITEM_PRICES_LOCATOR);
         List<WebElement> prices = driver.findElements(ITEM_PRICES_LOCATOR);
 
+        outerloop:
         for (int i = 0; i < prices.size(); i++) {
             for (int j = i + 1; j < prices.size(); j++) {
                 Integer price1 = Integer.parseInt(StringUtils.substringBefore(prices.get(i).getText().replaceAll("\\s+", ""), "тг"));
                 Integer price2 = Integer.parseInt(StringUtils.substringBefore(prices.get(j).getText().replaceAll("\\s+", ""), "тг"));
                 if (price1 > price2) {
                     actual = false;
-                    break;
+                    break  outerloop;
                 } else actual = true;
             }
         }

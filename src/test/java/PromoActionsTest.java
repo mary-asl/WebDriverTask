@@ -1,9 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +10,7 @@ public class PromoActionsTest extends BaseForAllTests {
     private static final By PROMO_PAGE_LOCATOR = By.xpath(".//a[contains(@href,'/promotions/chistim-sklad')]");
     private static final By ITEMS_LOCATOR = By.xpath("//div[@class='dtList-inner']");
     private static final By SIZE_BTN_LOCATOR = By.xpath("//label[@data-size-name]");
+    private static final By SIGN_IN_FORM = By.cssSelector(".signIn");
 
     @Test
     public void verifyDisplayedItems() {
@@ -45,22 +41,16 @@ public class PromoActionsTest extends BaseForAllTests {
     @Test()
     public void verifyFavorites() {
         driver.findElement(ITEMS_LOCATOR).click();
-        boolean check;
-        try {
-            int elementPosition = driver.findElement(SIZE_BTN_LOCATOR).getLocation().getY();
-            String js = String.format("window.scroll(0, %s)", elementPosition);
-            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-            ((JavascriptExecutor) driver).executeScript(js);
-            check = true;
-        } catch (NoSuchElementException e) {
-            check = false;
-        }
-        if (check)
+        WebElement size = driver.findElement(SIZE_BTN_LOCATOR);
+        int elementPosition = size.getLocation().getY();
+        String js = String.format("window.scroll(0, %s)", elementPosition);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        ((JavascriptExecutor) driver).executeScript(js);
+        if (size.isDisplayed())
             driver.findElement(SIZE_BTN_LOCATOR).click();
         driver.findElement(By.xpath("//div[@class='order']/button")).click();
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".signIn")));
-        boolean actual = element.isDisplayed();
+        waitForElementVisible(SIGN_IN_FORM);
+        boolean actual = driver.findElement(SIGN_IN_FORM).isDisplayed();
         Assert.assertTrue(actual);
     }
 }
